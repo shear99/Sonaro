@@ -71,6 +71,14 @@ android {
         viewBinding true
         buildConfig true
     }
+
+    // FORK: CI runs Android lint (.github/workflows/lint.yml). The issues upstream's code
+    // already had are recorded in lint-baseline.xml, so only new ones fail the build.
+    // To record the current state again (after fixing old issues or merging upstream):
+    //   ./gradlew :app:updateLintBaseline
+    lint {
+        baseline = file("lint-baseline.xml")
+    }
 }
 
 kotlin {

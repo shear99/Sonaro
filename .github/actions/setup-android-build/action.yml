@@ -1,0 +1,80 @@
+# Sonaro-only file (does not exist upstream).
+#
+# Everything a job needs before it can call ./gradlew, kept in one place so the
+# workflows cannot drift apart again (upstream built with JDK 21 in one workflow
+# and JDK 17 in the other).
+#
+# The caller must run actions/checkout first: a local action can only be used
+# once the repository is on disk.
+name: Set up Android build
+description: Pinned submodules, the JDK Gradle asks for, Gradle cache, cached native libraries.
+
+runs:
+  using: composite
+  steps:
+    # The native modules are built with CMake + Ninja. The runner image ships
+    # CMake but not Ninja. Refresh the package index only if the first try fails.
+    - name: Install ninja-build
+      shell: bash
+      run: |
+        if ! command -v ninja >/dev/null; then
+          sudo apt-get install -y ninja-build ||
+            { sudo apt-get update && sudo apt-get install -y ninja-build; }
+        fi
+
+    # Always the commits recorded in this repository, never the tip of a
+    # submodule's branch (no --remote), so a push to someone else's repository
+    # cannot change what CI builds.
+    #
+    # media/ has a nested FFmpeg submodule on git.ffmpeg.org. The same commit is
+    # fetched from FFmpeg's official GitHub mirror instead: one less host that
+    # can be down, and it supports the shallow fetch of a pinned commit. Git
+    # verifies the commit hash, so the content is identical whichever host
+    # serves it.
+    - name: Check out pinned submodules
+      shell: bash
+      run: |
+        git config --global url."https://github.com/FFmpeg/FFmpeg.git".insteadOf "https://git.ffmpeg.org/ffmpeg.git"
+        git submodule update --init --recursive --depth 1 --jobs 4
+
+    # gradle/gradle-daemon-jvm.properties asks for a JetBrains JDK 21. Installing
+    # exactly that keeps Gradle from downloading a second JDK on every run.
+    - name: Set up JDK 21
+      uses: actions/setup-java@v6
+      with:
+        distribution: jetbrains
+        java-version: "21"
+        cache: gradle
+      env:
+        # The JetBrains installer lists releases through the GitHub API.
+        GITHUB_TOKEN: ${{ github.token }}
+
+    # TagLib and FFmpeg are cross-compiled for four ABIs by shell scripts that
+    # Gradle only runs when their output directory is missing. Their inputs
+    # change rarely, so the output is cached between runs.
+    - name: Identify native library sources
+      id: native
+      shell: bash
+      run: |
+        echo "taglib=$(git rev-parse HEAD:musikr/src/main/cpp/taglib)" >> "$GITHUB_OUTPUT"
+        echo "media=$(git rev-parse HEAD:media)" >> "$GITHUB_OUTPUT"
+
+    # Inputs: TagLib sources (submodule commit), the build script and toolchain
+    # file, and the NDK version (ndk_version in the root build.gradle).
+    - name: Cache prebuilt TagLib
+      uses: actions/cache@v6
+      with:
+        path: musikr/src/main/cpp/taglib/pkg
+        key: taglib-v1-${{ runner.os }}-${{ runner.arch }}-${{ steps.native.outputs.taglib }}-${{ hashFiles('build.gradle', 'musikr/build.gradle', 'musikr/src/main/cpp/build_taglib.sh', 'musikr/src/main/cpp/android.toolchain.cmake') }}
+
+    # Inputs: all inside the media submodule (FFmpeg commit, build_ffmpeg.sh,
+    # decoder list and NDK version in decoder_ffmpeg/build.gradle.kts), so the
+    # media commit identifies them. avconfig.h is written by FFmpeg's configure
+    # step and is the one generated header the JNI wrapper includes.
+    - name: Cache prebuilt FFmpeg
+      uses: actions/cache@v6
+      with:
+        path: |
+          media/libraries/decoder_ffmpeg/src/main/jni/ffmpeg/android-libs
+          media/libraries/decoder_ffmpeg/src/main/jni/ffmpeg/libavutil/avconfig.h
+        key: ffmpeg-v1-${{ runner.os }}-${{ runner.arch }}-${{ steps.native.outputs.media }}
