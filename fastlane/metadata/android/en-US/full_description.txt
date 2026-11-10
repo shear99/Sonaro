@@ -1,4 +1,6 @@
-Auxio is a local music player with a fast, reliable UI/UX without the many useless features present in other music players. Built off of modern media playback libraries, Auxio has superior library support and listening quality compared to other apps that use outdated Android functionality. In short, <b>It plays music.</b>
+Sonaro is a local music player with a fast, reliable UI/UX. Built off of modern media playback libraries, Sonaro has superior library support and listening quality compared to other apps that use outdated Android functionality.
+
+Sonaro is a fork of Auxio (https://github.com/OxygenCobalt/Auxio) and is not affiliated with the Auxio project.
 
 <b>Features</b>
 

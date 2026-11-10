@@ -1,36 +1,33 @@
 <p align="center"><img src="fastlane/metadata/android/en-US/images/icon.png" width="150"></p>
-<h1 align="center"><b>Auxio</b></h1>
-<h4 align="center">A simple, rational music player for Android.</h4>
+<h1 align="center"><b>Sonaro</b></h1>
+<h4 align="center">A local music player for Android, forked from <a href="https://github.com/OxygenCobalt/Auxio">Auxio</a>.</h4>
 <p align="center">
-    <a href="https://github.com/oxygencobalt/Auxio/releases/tag/v4.1.5">
-        <img alt="Latest Version" src="https://img.shields.io/static/v1?label=tag&message=v4.1.5&color=64B5F6&style=flat">
-    </a>
-    <a href="https://github.com/oxygencobalt/Auxio/releases/">
-        <img alt="Releases" src="https://img.shields.io/github/downloads/OxygenCobalt/Auxio/total.svg?color=4B95DE&style=flat">
-    </a>
     <a href="https://www.gnu.org/licenses/gpl-3.0">
-        <img src="https://img.shields.io/badge/license-GPL%20v3-2B6DBE.svg?style=flat">
+        <img alt="License" src="https://img.shields.io/badge/license-GPL%20v3-0D9488.svg?style=flat">
     </a>
-    <img alt="Minimum SDK Version" src="https://img.shields.io/badge/API-24%2B-1450A8?style=flat">
-</p>
-<h4 align="center"><a href="/CHANGELOG.md">Changelog</a> | <a href="https://github.com/OxygenCobalt/Auxio/wiki">Wiki</a> | <a href="https://github.com/OxygenCobalt/Auxio#Donate">Donate</a></h4>
-<p align="center">
-    <a href="https://f-droid.org/app/org.oxycblt.auxio"><img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" width="250"></a>
-    <a href="https://accrescent.app/app/org.oxycblt.auxio">
-        <img alt="Get it on Accrescent" src="https://accrescent.app/badges/get-it-on.png" width="250">
+    <img alt="Minimum SDK Version" src="https://img.shields.io/badge/API-24%2B-14B8A6?style=flat">
+    <a href="https://github.com/OxygenCobalt/Auxio">
+        <img alt="Based on Auxio" src="https://img.shields.io/badge/based%20on-Auxio-2DD4BF?style=flat">
     </a>
 </p>
-<p align="center">
-    <a href="https://hosted.weblate.org/engage/auxio/"><img height=64 src="https://hosted.weblate.org/widgets/auxio/-/strings/287x66-grey.png" alt="Translation status" /></a>
-</p>
+<h4 align="center"><a href="/CHANGELOG.md">Changelog</a> | <a href="/FORK_CHANGES.md">Changes from Auxio</a> | <a href="#credits">Credits</a></h4>
 
 ## About
 
-Auxio is a local music player with a fast, reliable UI/UX without the many useless features present in other music players. Built off of modern media playback libraries, Auxio has superior library support and listening quality compared to other apps that use outdated Android functionality. In short, **It plays music.**
+Sonaro is a hard fork of [Auxio](https://github.com/OxygenCobalt/Auxio), the local music player by
+Alexander Capehart (OxygenCobalt). It keeps Auxio's fast, reliable UI/UX and its modern playback and
+library stack, and keeps merging upstream changes.
 
-**The default branch is the development version of the repository. For a stable version, see the master branch.**
+Sonaro is a separate app with its own name, icon, and application ID (`app.sonaro`), so it installs
+next to Auxio and shares no data with it. **It is not affiliated with or supported by the Auxio
+project. Please report Sonaro problems [here](https://github.com/shear99/Sonaro/issues), not to Auxio.**
+
+Right now Sonaro behaves like the Auxio development version it was forked from. Every change made to
+upstream files is listed in [FORK_CHANGES.md](/FORK_CHANGES.md).
 
 ## Screenshots
+
+These are upstream Auxio's screenshots. The interface is currently the same.
 
 <p align="center">
     <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/shot0.png" width=250>
@@ -40,7 +37,6 @@ Auxio is a local music player with a fast, reliable UI/UX without the many usele
     <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/shot4.png" width=250>
     <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/shot5.png" width=250>
 </p>
-
 
 ## Features
 
@@ -72,29 +68,16 @@ precise/original dates, sort tags, and more
 - Services (`FOREGROUND_SERVICE`, `WAKE_LOCK`) to keep the music playing in the background
 - Notifications (`POST_NOTIFICATION`) to indicate ongoing playback and music loading
 
-## Donate
+## Credits
 
-You can support Auxio's development through [my Github Sponsors page](https://github.com/sponsors/OxygenCobalt). Get the ability to prioritize features and have your profile added to the README, Release Changelogs, and even the app itself!
+Sonaro exists because of Auxio. Nearly all of the code in this repository was written by
+[Alexander Capehart (OxygenCobalt)](https://github.com/OxygenCobalt) and the
+[Auxio contributors](https://github.com/OxygenCobalt/Auxio/graphs/contributors), and the full upstream
+history is preserved in this repository.
 
-<h3 align="center">Legendary supporters:</h3>
-<p align="center">
-    <a href="https://github.com/bkkellyh"><img src="https://avatars.githubusercontent.com/u/248118457?v=4" width=250 /></a> 
-    <a href="ttps://github.com/gruntstumper"><img src="https://avatars.githubusercontent.com/u/308816080?v=4" width=125 /></a> 
-</p>
-<h3 align="center">
-    <a href="https://github.com/bkkellyh">@bkkellyh</a> - <i>$500!</i>, <a href="https://github.com/gruntstumper">@gruntstumper</a> - $100
-</h3>
-
-<hr />
-
-<p align="center"><b>$8/month supporters:</b></p>
-
-<p align="center">
-    <a href="https://github.com/uku3lig"><img src="https://avatars.githubusercontent.com/u/61147779?v=4" width=50 /></a>
-</p>
-<p align="center">
-    And **1** Private Sponsor!
-</p>
+If you like what Sonaro is built on, please consider
+[sponsoring Auxio's author](https://github.com/sponsors/OxygenCobalt). Donations made there support
+Auxio, not Sonaro.
 
 ## Building
 
@@ -170,22 +153,26 @@ cd ~/Android/Sdk/platform-tools
 
 ## Contributing
 
-Auxio accepts most contributions as long as they follow the [Contribution Guidelines](/.github/CONTRIBUTING.md).
+Issues and pull requests for Sonaro are welcome in [this repository](https://github.com/shear99/Sonaro).
+See the [Contribution Guidelines](/.github/CONTRIBUTING.md).
 
-However, feature additions and major UI changes are less likely to be accepted. See
-[Why Are These Features Missing?](https://github.com/OxygenCobalt/Auxio/wiki/Why-Are-These-Features-Missing%3F)
-for more information.
-
-
+If a bug also happens in Auxio itself, it is best fixed upstream, and Sonaro will pick the fix up with
+its next upstream merge. Translations of the strings inherited from Auxio are maintained in
+[Auxio's Weblate project](https://hosted.weblate.org/engage/auxio/).
 
 ## License
 
 [![GNU GPLv3 Image](https://www.gnu.org/graphics/gplv3-127x51.png)](http://www.gnu.org/licenses/gpl-3.0.en.html)
 
-Auxio is Free Software: You can use, study share and improve it at your
+Sonaro is Free Software: You can use, study, share and improve it at your
 will. Specifically you can redistribute and/or modify it under the terms of the
 [GNU General Public License](https://www.gnu.org/licenses/gpl.html) as
 published by the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-More information can be found [here](https://github.com/OxygenCobalt/Auxio/wiki/Licenses).
+Sonaro is a modified version of Auxio, Copyright (c) Auxio Project, which is licensed under the same
+terms. The original copyright and license notices are kept in every source file. Modifications began
+in November 2026 and are recorded in the git history and in [FORK_CHANGES.md](/FORK_CHANGES.md).
+
+Licenses of the bundled third-party components are listed on
+[Auxio's wiki](https://github.com/OxygenCobalt/Auxio/wiki/Licenses).

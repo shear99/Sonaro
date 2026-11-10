@@ -23,5 +23,5 @@
 debug.zip
 
 #### Due diligence
-- [ ] I have read the [Contribution Guidelines](https://github.com/OxygenCobalt/Auxio/blob/dev/.github/CONTRIBUTING.md).
-- [ ] I have read the [Why Are These Features Missing?](https://github.com/OxygenCobalt/Auxio/wiki/Why-Are-These-Features-Missing%3F) page.
+- [ ] I have read the [Contribution Guidelines](https://github.com/shear99/Sonaro/blob/main/.github/CONTRIBUTING.md).
+- [ ] Every edit to a file that also exists in upstream Auxio is marked with a `FORK:` comment and listed in [FORK_CHANGES.md](https://github.com/shear99/Sonaro/blob/main/FORK_CHANGES.md).
