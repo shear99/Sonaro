@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Strings that exist only in Sonaro. Keeping them out of upstream's strings.xml keeps upstream
+translation merges clean. Names carry the ext_ prefix. -->
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <!-- About screen | Credit to the project Sonaro is forked from -->
+    <string name="ext_lbl_based_on_auxio">Based on Auxio</string>
+    <string name="ext_lbl_auxio_source">Auxio source code</string>
+</resources>

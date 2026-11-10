@@ -87,8 +87,9 @@ class ErrorDetailsDialog : ViewBindingMaterialDialogFragment<DialogErrorDetailsB
 
     private companion object {
         /** The URL to the bug report issue form */
+        // FORK: Sonaro bugs go to Sonaro's tracker, never to upstream Auxio's.
         const val LINK_ISSUES =
-            "https://github.com/OxygenCobalt/Auxio/issues/new" +
-                "?assignees=OxygenCobalt&labels=bug&projects=&template=bug-crash-report.yml"
+            "https://github.com/shear99/Sonaro/issues/new" +
+                "?labels=bug&template=bug-crash-report.yml"
     }
 }

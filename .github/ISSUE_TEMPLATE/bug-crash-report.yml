@@ -1,13 +1,13 @@
 name: Bug/Crash Report
 description: Report a problem
 labels: ["bug"]
-assignees:
-  - OxygenCobalt
+# FORK: No default assignee (upstream assigns its own maintainer) and Sonaro wording/links below.
 body:
   - type: markdown
     attributes:
       value: |
-        Welcome to Auxio's bug report form.
+        Welcome to Sonaro's bug report form.
+        Sonaro is a fork of [Auxio](https://github.com/OxygenCobalt/Auxio). Please report Sonaro problems here and not to the Auxio project.
         Please note that not every reported issue can be fixed. Well-written bug reports are more likely to be resolved.
   - type: textarea
     id: desc
@@ -81,11 +81,11 @@ body:
       label: Duplicates
       description: By submitting this issue, you aknowledge the following
       options:
-        - label: I have checked the [Troubleshooting](https://github.com/OxygenCobalt/Auxio/wiki/Troubleshooting) page.
+        - label: I have checked Auxio's [Troubleshooting](https://github.com/OxygenCobalt/Auxio/wiki/Troubleshooting) page, which also applies to Sonaro.
           required: true
         - label: I have checked this issue for duplicates.
           required: true
-        - label: I have checked that this issue occurs on the [lastest version](https://github.com/OxygenCobalt/Auxio/releases).
+        - label: I have checked that this issue occurs on the [latest version](https://github.com/shear99/Sonaro/releases).
           required: true
-        - label: I agree to the [Contribution Guidelines](https://github.com/OxygenCobalt/Auxio/blob/dev/.github/CONTRIBUTING.md).
+        - label: I agree to the [Contribution Guidelines](https://github.com/shear99/Sonaro/blob/main/.github/CONTRIBUTING.md).
           required: true          

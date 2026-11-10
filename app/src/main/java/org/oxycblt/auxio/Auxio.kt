@@ -46,10 +46,12 @@ class Auxio : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        // FORK: Sonaro is a good-faith GPL fork, so its own application IDs count as official
+        // here. The notice still fires for anything repackaged under another ID.
         @Suppress("KotlinConstantConditions")
         if (
-            BuildConfig.APPLICATION_ID != "org.oxycblt.auxio" &&
-                BuildConfig.APPLICATION_ID != "org.oxycblt.auxio.debug"
+            BuildConfig.APPLICATION_ID != "app.sonaro" &&
+                BuildConfig.APPLICATION_ID != "app.sonaro.debug"
         ) {
             Timber.plant(CopyleftNoticeTree())
         } else if (BuildConfig.DEBUG) {

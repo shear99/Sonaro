@@ -15,7 +15,9 @@ android {
     namespace "org.oxycblt.auxio"
 
     defaultConfig {
-        applicationId namespace
+        // FORK: Sonaro installs under its own application ID. The namespace above (and with
+        // it the Kotlin package) stays org.oxycblt.auxio so upstream merges keep applying.
+        applicationId "app.sonaro"
         versionName "4.1.5"
         versionCode 75
 

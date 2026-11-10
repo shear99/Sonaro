@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ext_lbl_based_on_auxio">Auxio 기반</string>
+    <string name="ext_lbl_auxio_source">Auxio 소스 코드</string>
+</resources>
