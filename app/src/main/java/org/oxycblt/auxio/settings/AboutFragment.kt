@@ -70,6 +70,8 @@ class AboutFragment : ViewBindingFragment<FragmentAboutBinding>() {
         binding.aboutCode.setOnClickListener { requireContext().openInBrowser(LINK_SOURCE) }
         binding.aboutWiki.setOnClickListener { requireContext().openInBrowser(LINK_WIKI) }
         binding.aboutLicenses.setOnClickListener { requireContext().openInBrowser(LINK_LICENSES) }
+        // FORK: Credit row linking back to upstream Auxio.
+        binding.aboutUpstream.setOnClickListener { requireContext().openInBrowser(LINK_UPSTREAM) }
         binding.aboutProfile.setOnClickListener { requireContext().openInBrowser(LINK_PROFILE) }
         binding.aboutDonate.setOnClickListener { requireContext().openInBrowser(LINK_DONATE) }
         binding.aboutFeedbackGithub.setOnClickListener {
@@ -122,8 +124,11 @@ class AboutFragment : ViewBindingFragment<FragmentAboutBinding>() {
     }
 
     private companion object {
-        const val LINK_SOURCE = "https://github.com/OxygenCobalt/Auxio"
-        const val LINK_WIKI = "$LINK_SOURCE/wiki"
+        // FORK: Source and issues point at Sonaro. The wiki and license list are still
+        // upstream's (LINK_UPSTREAM), as are the author credit and donation links below.
+        const val LINK_SOURCE = "https://github.com/shear99/Sonaro"
+        const val LINK_UPSTREAM = "https://github.com/OxygenCobalt/Auxio"
+        const val LINK_WIKI = "$LINK_UPSTREAM/wiki"
         const val LINK_LICENSES = "$LINK_WIKI/Licenses"
         const val LINK_NEW_ISSUE = "$LINK_SOURCE/issues/new"
         const val LINK_PROFILE = "https://github.com/OxygenCobalt"

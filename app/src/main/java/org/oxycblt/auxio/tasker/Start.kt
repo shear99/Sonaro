@@ -40,7 +40,13 @@ class StartActionHelper(config: TaskerPluginConfig<Unit>) :
         get() = StartActionRunner::class.java
 
     override fun addToStringBlurb(input: TaskerInput<Unit>, blurbBuilder: StringBuilder) {
-        blurbBuilder.append(context.getString(R.string.lng_tasker_start))
+        // FORK: Upstream's translations of this blurb name Auxio. Swapping the name here
+        // avoids editing every translation, which would conflict with upstream updates.
+        blurbBuilder.append(
+            context
+                .getString(R.string.lng_tasker_start)
+                .replace("Auxio", context.getString(R.string.info_app_name), ignoreCase = true)
+        )
     }
 }
 

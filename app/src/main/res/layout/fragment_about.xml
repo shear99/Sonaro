@@ -45,11 +45,13 @@
                     android:layout_height="match_parent"
                     android:paddingBottom="@dimen/spacing_tiny">
 
+                    <!-- FORK: Described by the app name. Upstream's desc_auxio_icon says
+                    "Auxio icon" in every translation. -->
                     <ImageView
                         android:id="@+id/about_auxio_icon"
                         style="@style/Widget.Auxio.Image.Small"
                         android:layout_marginTop="@dimen/spacing_medium"
-                        android:contentDescription="@string/desc_auxio_icon"
+                        android:contentDescription="@string/info_app_name"
                         android:src="@mipmap/ic_launcher"
                         app:layout_constraintEnd_toStartOf="@+id/about_app_name"
                         app:layout_constraintHorizontal_chainStyle="packed"
@@ -167,14 +169,25 @@
                     android:orientation="vertical"
                     android:paddingBottom="@dimen/spacing_tiny">
 
+                    <!-- FORK: This card credits upstream Auxio and its author instead of
+                    presenting him as the author of Sonaro. -->
                     <TextView
                         android:id="@+id/about_author"
                         style="@style/Widget.Auxio.TextView.Header"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/lbl_author"
+                        android:text="@string/ext_lbl_based_on_auxio"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:id="@+id/about_upstream"
+                        style="@style/Widget.Auxio.TextView.Icon.Clickable"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ext_lbl_auxio_source"
+                        app:drawableStartCompat="@drawable/ic_code_24"
+                        app:drawableTint="?attr/colorControlNormal" />
 
                     <TextView
                         android:id="@+id/about_profile"
@@ -206,10 +219,13 @@
 
 
 
+            <!-- FORK: Hidden. These are upstream Auxio's sponsors, and donating there does not
+            add a name to Sonaro. -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_medium">
+                android:layout_marginTop="@dimen/spacing_medium"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -296,11 +312,13 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/about_licenses" />
 
+                    <!-- FORK: Hidden. The address behind it is upstream Auxio's. -->
                     <TextView
                         android:id="@+id/about_feedback_email"
                         style="@style/Widget.Auxio.TextView.Icon.Clickable"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         android:text="@string/lbl_email"
                         app:drawableStartCompat="@drawable/ic_email_24"
                         app:drawableTint="?attr/colorControlNormal"

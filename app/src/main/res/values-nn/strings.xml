@@ -168,7 +168,8 @@
     <string name="set_playback">Avspeling</string>
     <string name="set_headset_autoplay">Automatisk avspeling med hovudsett</string>
     <string name="set_rewind_prev">Spol atter før spor vert hoppa over</string>
-    <string name="set_rewind_prev_desc">Spol atter før Auxio hoppar til førre song</string>
+    <!-- FORK: Auxio -> Sonaro -->
+    <string name="set_rewind_prev_desc">Spol atter før Sonaro hoppar til førre song</string>
     <string name="set_repeat_pause">Pausa ved tvitaking</string>
     <string name="set_remember_pause">Hugs pausemodus</string>
     <string name="set_remember_pause_desc">Vert spelande/pausa ved sporbytting eller købrigding</string>
@@ -345,7 +346,8 @@
     </plurals>
     <string name="fmt_lib_total_size">Total storleik: %s</string>
     <string name="set_task_exit">Avslutta alltid på stenging</string>
-    <string name="set_task_exit_desc">Avslutta avspeling når fjerna frå nylege appar, endå om Auxio spelar av musikk</string>
+    <!-- FORK: Auxio -> Sonaro -->
+    <string name="set_task_exit_desc">Avslutta avspeling når fjerna frå nylege appar, endå om Sonaro spelar av musikk</string>
     <string name="set_saf_multithread">Fleirtrådsfilutforsking</string>
     <string name="set_saf_multithread_desc">Snøggare, men mislukkast på somme einingar</string>
     <string name="err_share_too_large">Dette er for stort å dela</string>
