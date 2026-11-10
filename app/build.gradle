@@ -73,6 +73,10 @@ android {
     }
 }
 
+// FORK: The foss/gms product flavors, their dependencies and the check that keeps
+// proprietary libraries out of foss live in flavors.gradle, to keep this file close to upstream.
+apply from: "flavors.gradle"
+
 kotlin {
     compilerOptions {
         jvmTarget = JvmTarget.JVM_21
