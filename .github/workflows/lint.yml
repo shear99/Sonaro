@@ -31,7 +31,8 @@ jobs:
     - name: Run unit tests
       run: ./gradlew --init-script .github/ci.init.gradle :app:ciUnitTest :musikr:ciUnitTest
     # FORK: Android lint was never run by upstream's CI. `lint` checks the default
-    # variant (debug today, fossDebug once flavors exist).
+    # variant (debug today, fossDebug once flavors exist). Issues upstream's code
+    # already had are listed in app/lint-baseline.xml; only new ones fail.
     - name: Run Android lint
       run: ./gradlew :app:lint
     # FORK: keep the HTML reports when a check fails, to read without rerunning.
