@@ -1,3 +1,5 @@
+<!-- FORK: Draws the Sonaro glyph (tuning fork with resonance arcs). The file keeps its upstream
+name so the notification, widget and Android Auto references stay untouched. -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="24dp"
     android:height="24dp"
@@ -6,7 +8,7 @@
     android:viewportHeight="24">
     <path
         android:fillColor="@android:color/transparent"
-        android:pathData="M13 4l4 4m-4-4v13m0 0l-3 3-3-3 3-3"
+        android:pathData="M12 14.5V20.5M9 3.5V11.5a3 3 0 0 0 6 0V3.5M5.2 4.8Q3.8 7.5 5.2 10.2M18.8 4.8Q20.2 7.5 18.8 10.2"
         android:strokeWidth="2"
         android:strokeColor="@android:color/white"
         android:strokeLineCap="round"
