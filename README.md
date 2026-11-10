@@ -106,6 +106,23 @@ download the external code.
 3. You are **unable** to build this project on windows, as the custom Media3 build runs shell scripts that
 will only work on unix-based systems.
 
+<!-- FORK: build flavors -->
+### Build flavors
+
+The app is built in two flavors. They are the same app and differ only in which libraries may be linked in:
+
+| Flavor | Contents | Meant for |
+|--------|----------|-----------|
+| `foss` (default) | Free software only | F-Droid |
+| `gms` | Everything in `foss`, plus Google Play services for the Wear OS (Galaxy Watch) features | GitHub releases |
+
+- `./gradlew app:assembleFossDebug` and `./gradlew app:assembleGmsDebug` build one flavor each,
+`./gradlew app:assembleDebug` builds both. The APKs end up in `app/build/outputs/apk/<flavor>/<build type>/`.
+- Both flavors use the same application ID, so only one of them can be installed on a device at a time.
+- The build fails if a proprietary library reaches the `foss` flavor, even through another dependency.
+The flavors and that rule are defined in `app/flavors.gradle`.
+- Code for a single flavor goes in `app/src/foss` or `app/src/gms`, everything shared stays in `app/src/main`.
+
 ### Set up Android Studio
 
 #### Install Android Studio.
@@ -153,9 +170,12 @@ Android Studio also offers virtual devices that come with this pre-configured.
 #### Install the app on the Android Phone
 To install the app on your physical device or emulator, run this command:
 
+<!-- FORK: installDebug no longer exists now that there are two flavors -->
 ```bash
-./gradlew installDebug
+./gradlew installFossDebug
 ```
+
+Use `installGmsDebug` instead for the flavor with Google Play services.
 
 Auxio should now appear in the list of Apps
 

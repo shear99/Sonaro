@@ -1,0 +1,69 @@
+// Build flavors of the app. Applied from app/build.gradle.
+//
+// The app is built in two flavors. They share all of app/src/main and differ only in whether
+// proprietary Google libraries may be linked in:
+//
+//   foss  Free software only. The flavor F-Droid builds, and the default one in Android Studio.
+//   gms   The same app plus Google Play services. Carries the Wear OS (Galaxy Watch) features,
+//         which reach the watch through the Play services Wearable Data Layer.
+//
+// Code that exists in only one flavor goes in app/src/foss or app/src/gms. Shared code must
+// not name a class from those directories directly: it talks to an interface declared in
+// app/src/main, and each flavor supplies its own implementation of it.
+//
+// Both flavors keep the same applicationId. The watch app can only pair with a phone app of the
+// same applicationId and signature, and the cover provider authority is derived from it.
+
+android {
+    flavorDimensions "distribution"
+
+    productFlavors {
+        foss {
+            dimension "distribution"
+            isDefault = true
+        }
+
+        gms {
+            dimension "distribution"
+            // Shown on the about screen, so a bug report says which build it came from.
+            versionNameSuffix "-gms"
+        }
+    }
+}
+
+dependencies {
+    // Phone <-> watch transport. Proprietary, so gms only.
+    gmsImplementation "com.google.android.gms:play-services-wearable:20.0.1"
+}
+
+// Maven groups that only publish proprietary libraries. A group matches itself and everything
+// below it, so "com.google.android.gms" also covers "com.google.android.gms.foo".
+def proprietaryGroups = [
+    "com.google.android.gms",       // Google Play services
+    "com.google.firebase",          // Firebase
+    "com.google.android.play",      // Play Core, in-app review and update
+    "com.google.android.libraries", // Maps, Places and other Google SDKs
+    "com.google.mlkit",             // ML Kit
+    "com.android.billingclient",    // Play Billing
+    "com.android.installreferrer",  // Play Install Referrer
+]
+
+// Keep the foss flavor free of proprietary libraries, including ones that would only arrive
+// through another dependency. Every configuration of that flavor is named foss*, so the rule
+// is attached by name and fires while the dependency graph is being resolved, before anything
+// is compiled.
+configurations.configureEach { configuration ->
+    if (!configuration.name.startsWith("foss")) {
+        return
+    }
+
+    configuration.resolutionStrategy.eachDependency { details ->
+        def group = details.requested.group
+        if (proprietaryGroups.any { group == it || group.startsWith(it + ".") }) {
+            throw new GradleException(
+                "${details.requested.group}:${details.requested.name} is proprietary and must " +
+                "not be part of the foss flavor (found in ${configuration.name}). Declare it " +
+                "with gmsImplementation, or drop the dependency that pulls it in.")
+        }
+    }
+}
