@@ -20,7 +20,7 @@ working on.
 
 | File | Change | Why |
 |------|--------|-----|
-| `app/build.gradle` | One `apply from: "flavors.gradle"` line after the `android` block. | Adds the `foss` (F-Droid, free software only) and `gms` (Google Play services, for the watch features) product flavors. Everything else about them is in the Sonaro-only `app/flavors.gradle`. |
+| `app/build.gradle` | One `apply from: "flavors.gradle"` line at the end of the file. | Adds the `foss` (F-Droid, free software only) and `gms` (Google Play services, for the watch features) product flavors. Everything else about them is in the Sonaro-only `app/flavors.gradle`. |
 | `README.md` | New "Build flavors" subsection under "Building", and `installDebug` became `installFossDebug`. | With two flavors there is no single `installDebug` task any more. |
 
 ## CI
