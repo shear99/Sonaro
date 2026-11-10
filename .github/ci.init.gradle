@@ -1,0 +1,19 @@
+// Sonaro-only file (does not exist upstream).
+//
+// Gradle init script used by the workflows: ./gradlew --init-script .github/ci.init.gradle ...
+//
+// It adds one task, ciUnitTest, to every project. The Android plugin names its unit
+// test tasks after the build variant: testDebugUnitTest today, testFossDebugUnitTest
+// and testGmsDebugUnitTest once the foss/gms product flavors exist. ciUnitTest runs
+// whichever of those exist, so the workflows do not have to be edited every time a
+// flavor or a module is added.
+//
+// To run the same thing locally:
+//   ./gradlew --init-script .github/ci.init.gradle :app:ciUnitTest :musikr:ciUnitTest
+allprojects {
+    tasks.register("ciUnitTest") {
+        group = "verification"
+        description = "Runs the JVM unit tests of every debug variant of this project."
+        dependsOn(tasks.named { it.startsWith("test") && it.endsWith("DebugUnitTest") })
+    }
+}

@@ -25,3 +25,5 @@ working on.
 
 | File | Change | Why |
 |------|--------|-----|
+| `.github/workflows/android.yml` | Runs for pull requests and `main` only, with concurrency and read-only permissions. Setup steps replaced by the shared `.github/actions/setup-android-build` action. `packageDebug` -> `:app:assembleDebug`, APKs uploaded by glob as `Sonaro_Canary`. Actions moved to their current major versions. | Upstream ran on every branch push (two runs per pull request) and used deprecated Node 20 actions. `assembleDebug` and the glob keep working once foss/gms flavors exist. |
+| `.github/workflows/lint.yml` | Same triggers and shared setup, so it builds with JDK 21 instead of 17. Adds the app's unit tests (through `.github/ci.init.gradle`) and Android lint (`:app:lint`), and uploads reports when a check fails. | Upstream used a different JDK than the build needs, tested only `musikr`, and never ran Android lint. |
